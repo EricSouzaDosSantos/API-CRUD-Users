@@ -30,5 +30,10 @@ public class UsersController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-  
+    @PostMapping
+    public Users PostUsers(@RequestBody Users users){
+            Users user = repository.save(users);
+            System.out.println("User Registered with sucessfully");
+            return user;
+    }
 }
