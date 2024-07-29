@@ -1,21 +1,29 @@
-### Documentação dos Métodos
+# Api para um crud simples de usuarios
 
-Este arquivo README documenta os métodos implementados na classe `UsersController`.
+Essa api esta sendo feita para estudos dos métodos https e também para estudar a interface de documentação do swagger-ui.
 
-**Classe:** UsersController
+## Tecnologias utilizadas
+- Java
+- Spring-boot
+- Banco de dados em memória(H2-database)
+- Swagger-ui
+- JPA
 
-**Pacote:** com.user.crud.controller
+## Métodos da API:
 
-**Objetivo:** Gerenciar operações CRUD para usuários.
+- **GetAllUsers**
+- **GetById**
+- **PostUser**
 
-### Métodos:
-
-**1. GetAllUsers:**
+### **1. GetAllUsers:**
 
 - **Descrição:** Recupera todos os usuários do repositório.
-- **Requisição:** GET /Users
-- **Retorno:** Lista de objetos `Users`.
+- **Requisição:** GET
+- **Rota da requisição:** /Users
+- **Retorno:** Retorna todos os usuários cadastrados na api como objeto(Users).
 
+### Exemplo de retorno do método "GetAllUsers"
+- Url da requisição: localhost:8080/Users
 ```json
 [
   {
@@ -25,5 +33,99 @@ Este arquivo README documenta os métodos implementados na classe `UsersControll
     "email": "teste@gmail.com",
     "birthDate": "20-03-2007"
     
+  },
+
+  {
+    "id": 2,
+    "cpf": "123.456.789-10",
+    "name": "other user",
+    "email": "teste@gmail.com",
+    "birthDate": "12-34-5678"
+
   }
 ]
+```
+---
+
+### **2. GetById:**
+
+- **Descrição:** Recupera um usuário especifico através do identificador dele(id).
+- **Requisição:** GET
+- **Rota da requisição:** /Users/id
+- **Retorno:** Retorna um usuário especifico cadastrados na api.
+
+### Exemplo de retorno do método "GetById"
+- Url de requisição: localhost:8080/Users/1
+```json
+[
+    {
+    "id": 1,
+    "cpf": "123.456.789-10",
+    "name": "Eric Souza",
+    "email": "teste@gmail.com",
+    "birthDate": "20-03-2007"
+    }
+]
+```
+---
+### **3. PostUsers:**
+
+- **Descrição:** Faz o cadastro dos usuários no banco em memória.
+- **Requisição:** Post
+- **Rota da requisição:** /Users
+- **Retorno:** Retorna com o Usuário cadastrado com sucesso.
+
+### Exemplo de retorno do método "PostUser"
+
+- Url de requisição: localhost:8080/Users
+
+```json
+[
+  {
+    "id": 3,
+    "cpf": "123.456.789-10",
+    "name": "new user",
+    "email": "newUser@gmail.com",
+    "birthDate": "20-03-2007"
+  }
+]
+```
+---
+
+## Como instalar e executar o  projeto em sua máquina
+
+### Passo 1: Clonar o repositório em sua máquina
+
+```
+git clone https://github.com/EricSouzaDosSantos/Rest-API.git
+```
+### Passo 2: Abrir o projeto com alguma IDE da sua preferência
+ 
+Para esse projeto eu recomendo que utilize o visual studio code ou o intelliJ IDEA
+
+##### Exemplo com intelliJ
+
+- Depois de executar o comando git clone, esse comando vai criar uma pasta no local em que você estava no terminal.
+- O projeto se encontra em uma pasta chamada "Rest-API" gerada pelo git clone.
+- Abra o projeto pelo IntelliJ. 
+- Execute a classe CrudApplication.
+- acesse no seu navegador a url da api com a porta correspondente.
+- Pronto sua API já está em funcionamento.
+
+#### Testando os métodos HTTP's com a interface do swagger-ui
+
+- em sua api acesse o Url dela na porta correspondente.
+- caso sua api esteja na porta 8080 acesse: localhost:8080/swagger-ui.html.
+- isso abrirá a interface do swagger-ui e você poderá executar os métodos por lá tranquilamente.
+
+---
+
+## Contribuição
+
+Este é um projeto de código aberto, então sinta-se à vontade para contribuir com sugestões, correções de bugs ou até mesmo novas funcionalidades. Todas as contribuições são bem-vindas!
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT. Para mais detalhes, consulte o arquivo [LICENSE](LICENSE).
+
+---
