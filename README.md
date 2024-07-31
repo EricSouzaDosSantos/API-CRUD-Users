@@ -97,7 +97,7 @@ Essa api esta sendo feita para estudos dos métodos https e também para estudar
 ### Passo 1: Clonar o repositório em sua máquina
 
 ```
-git clone https://github.com/EricSouzaDosSantos/Rest-API.git
+git clone https://github.com/EricSouzaDosSantos/API-CRUD-Users.git
 ```
 ### Passo 2: Abrir o projeto com alguma IDE da sua preferência
  
