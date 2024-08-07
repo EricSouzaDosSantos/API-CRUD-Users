@@ -92,6 +92,36 @@ Essa api esta sendo feita para estudos dos métodos https e também para estudar
 ```
 ---
 
+### **4. UpdateUser:**
+
+- **Descrição:** Faz a atualização dos usuários no banco em memória.
+- **Requisição:** Put
+- **Rota de requisição:** /Users
+- **Retorno:** caso encontre o id do usuário, retorna um status 200 com ok usuário atualizado com sucesso.
+
+### Exemplo de requisição do body com json
+
+- Url de requisição: localhost:8080/Users
+
+```json
+//Exemplo de uma atualização da data de aniversário de um usuário.
+[
+  {
+    "id": 2, 
+    "cpf": "123.456.789-10",
+    "name": "new user",
+    "email": "newUser@gmail.com",
+    "birthDate": "10-04-2007"
+  }
+]
+```
+1 - você insere no corpo do json um id já existente.
+
+2- depois atualiza os dados abaixo do id.
+
+---
+
+
 ## Como instalar e executar o  projeto em sua máquina
 
 ### Passo 1: Clonar o repositório em sua máquina
