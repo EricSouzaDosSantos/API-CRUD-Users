@@ -24,7 +24,7 @@ public class UsersController {
     }
 
     @GetMapping(path = { "/{id}" })
-    public ResponseEntity getById(@PathVariable long id) {
+    public ResponseEntity GetById(@PathVariable long id) {
         return repository.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
@@ -42,9 +42,11 @@ public class UsersController {
 
     }*/
     @PutMapping
-    public Users updatePet(@RequestBody Users user) {
-        if (user.getId() > 0)
+    public Users UpdatePet(@RequestBody Users user) {
+        if (user.getId() > 0) {
+            System.out.println("User updated with sucessfully");
             return repository.save(user);
+        }
         return null;
     }
 

@@ -147,7 +147,6 @@ Para esse projeto eu recomendo que utilize o visual studio code ou o intelliJ ID
 - em sua api acesse o Url dela na porta correspondente.
 - caso sua api esteja na porta 8080 acesse: localhost:8080/swagger-ui.html.
 - isso abrirá a interface do swagger-ui e você poderá executar os métodos por lá tranquilamente.
-
 ---
 
 ## Contribuição
