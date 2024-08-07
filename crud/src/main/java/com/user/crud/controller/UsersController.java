@@ -2,8 +2,7 @@ package com.user.crud.controller;
 
 import com.user.crud.model.Users;
 import com.user.crud.repository.UsersRepository;
-import io.swagger.v3.oas.annotations.Operation;
-import org.apache.catalina.User;
+import com.user.crud.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +15,9 @@ public class UsersController {
 
     @Autowired
     public UsersRepository repository;
+
+    @Autowired
+    public UserService userService;
 
     @GetMapping
     public List<Users> GetAllUsers() {
@@ -31,10 +33,20 @@ public class UsersController {
     }
 
     @PostMapping
-    public Users PostUsers(@RequestBody Users users){
-            Users user = repository.save(users);
+    public Users PostUsers(@RequestParam String name,
+                           @RequestParam String cpf,
+                           @RequestParam String birthDate,
+                           @RequestParam String email){
+            Users user = new Users();
+            user.setName(name);
+            String CPFFormat = userService.FormatCPF(cpf);
+            String BirthFormat = userService.FormatBirthDate(birthDate);
+            user.setCpf(CPFFormat);
+            user.setBirthDate(BirthFormat);
+            user.setEmail(email);
+
             System.out.println("User Registered with sucessfully");
-            return user;
+            return repository.save(user);
     }
 
     /* @PutMapping("/{id}")
@@ -48,6 +60,16 @@ public class UsersController {
             return repository.save(user);
         }
         return null;
+    }
+
+    @DeleteMapping(path ={"/{id}"})
+    public ResponseEntity <?> DeleteById(@PathVariable long id) {
+        System.out.println("User deleted with sucessfully");
+        return repository.findById(id)
+                .map(record -> {
+                    repository.deleteById(id);
+                    return ResponseEntity.ok().build();
+                }).orElse(ResponseEntity.notFound().build());
     }
 
 }
