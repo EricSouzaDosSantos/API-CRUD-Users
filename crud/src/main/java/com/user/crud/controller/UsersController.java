@@ -36,4 +36,16 @@ public class UsersController {
             System.out.println("User Registered with sucessfully");
             return user;
     }
+
+    /* @PutMapping("/{id}")
+    public ResponseEntity<Users> UpdateById(@RequestBody Users user, @PathVariable("id") long id){
+
+    }*/
+    @PutMapping
+    public Users updatePet(@RequestBody Users user) {
+        if (user.getId() > 0)
+            return repository.save(user);
+        return null;
+    }
+
 }
