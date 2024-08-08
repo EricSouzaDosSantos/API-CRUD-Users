@@ -120,6 +120,12 @@ Essa api esta sendo feita para estudos dos métodos https e também para estudar
 
 ---
 
+### **5. DeleteById:**
+
+- **Descrição:** Deleta um usuário do banco em memória.
+- **Requisição:** Delete
+- **Rota de requisição:** /Users
+- **Retorno:** caso encontre o id do usuário, retorna um status 200 com o usuário deletado.
 
 ## Como instalar e executar o  projeto em sua máquina
 
