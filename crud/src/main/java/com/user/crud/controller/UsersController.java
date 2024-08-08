@@ -19,12 +19,14 @@ public class UsersController {
     @Autowired
     public UserService userService;
 
+    //método responsavél por retornar todos os usuários cadastrados na banco h2
     @GetMapping
     public List<Users> GetAllUsers() {
         List<Users> users = repository.findAll();
         return users;
     }
 
+    //Retorna um usuário especifico através do id dele
     @GetMapping(path = { "/{id}" })
     public ResponseEntity GetById(@PathVariable long id) {
         return repository.findById(id)
@@ -32,6 +34,7 @@ public class UsersController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    //método responsavél por salvar os usuários no h2
     @PostMapping
     public Users PostUsers(@RequestParam String name,
                            @RequestParam String cpf,
@@ -44,15 +47,11 @@ public class UsersController {
             user.setCpf(CPFFormat);
             user.setBirthDate(BirthFormat);
             user.setEmail(email);
-
             System.out.println("User Registered with sucessfully");
             return repository.save(user);
     }
 
-    /* @PutMapping("/{id}")
-    public ResponseEntity<Users> UpdateById(@RequestBody Users user, @PathVariable("id") long id){
-
-    }*/
+    //método responsaavél por atualizar algum usuário já cadastrado no h2
     @PutMapping
     public Users UpdatePet(@RequestBody Users user) {
         if (user.getId() > 0) {
@@ -62,9 +61,11 @@ public class UsersController {
         return null;
     }
 
+    //método responsavél por deletar um usuário especifico através do seu id
     @DeleteMapping(path ={"/{id}"})
     public ResponseEntity <?> DeleteById(@PathVariable long id) {
         System.out.println("User deleted with sucessfully");
+        System.out.println("User "+repository.findById(id)+" deleted with sucessfully");
         return repository.findById(id)
                 .map(record -> {
                     repository.deleteById(id);
